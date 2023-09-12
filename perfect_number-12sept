@@ -1,15 +1,15 @@
 int isPerfectNumber(long long N) {
         // code here
-        if(N==1)
+        if(N==1||N==0)
         {
         return 0;
         }
-        int sum=1;
+        long long sum=1;
         for(int i=2;i<=sqrt(N);i++)
         {
             if(N%i==0)
             {
-                sum=sum+i+N/i;
+                sum=sum+i+(N/i);
             }
         }
         if(sum==N)
