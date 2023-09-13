@@ -1,0 +1,18 @@
+to convert int to string we use - to_string function
+string res="";
+        if((S<=0 && n>1)||(S>9*n))
+            return "-1";
+        for(int i=0;i<n;i++)
+        {
+            if(S>9)
+            {
+                res+='9';
+                S-=9;
+            }
+            else if(S<=9)
+            {
+                    res+=to_string(S);
+                    S=0;
+            }
+        }
+        return res;
