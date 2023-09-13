@@ -1,0 +1,32 @@
+queue<pair<int,int>> q;
+        
+        int mod = 1e5;
+        vector<int> dis(mod,mod);
+        q.push({0,start});
+        dis[start] = 0;
+        
+        if(start == end){return 0;}
+        while(!q.empty())
+        {
+            int level = q.front().first;
+            int f2 = q.front().second;
+            q.pop();
+            
+            for(int j=0;j<arr.size();j++)
+            {
+                int ele = (f2 * arr[j])%mod;
+                if(level + 1<dis[ele])
+                {
+                    dis[ele] = level + 1;
+                    if(ele == end)
+                    {
+                        return level + 1;
+                    }
+                    q.push({level+1,ele});
+                }
+                
+            }
+            
+        }
+        
+        return -1;
