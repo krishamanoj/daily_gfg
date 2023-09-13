@@ -1,0 +1,37 @@
+private:
+    void dfs(int vertex,vector<int> adj[],bool visited[])
+    {
+        visited[vertex]=true;
+        for(auto it:adj[vertex])
+        {
+            if(!visited[it])
+            {
+                dfs(it,adj,visited);
+            }
+        }
+    }
+    public:
+    //Function to find a Mother Vertex in the Graph.
+	int findMotherVertex(int V, vector<int>adj[])
+	{
+	   int mother_vertex;
+        bool visited[V] = {false};
+        
+        for(int i=0;i<V;i++){
+            if(!visited[i]){
+                dfs(i,adj,visited);
+                mother_vertex = i;
+            }
+        }
+        
+        for(int i=0;i<V;i++)
+            visited[i] = false;
+            
+        dfs(mother_vertex,adj,visited);
+        //possible considered mother vertex doesnt visit all vertices 
+        for(int i=0;i<V;i++)
+            if(!visited[i])
+                return -1;
+                
+        return mother_vertex;
+	}
