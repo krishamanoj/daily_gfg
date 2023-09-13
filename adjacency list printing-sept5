@@ -1,0 +1,6 @@
+   vector<vector<int>> ans(V);
+        for(auto i:edges){
+            ans[i.first].push_back(i.second);
+            ans[i.second].push_back(i.first);
+        }
+        return ans;
